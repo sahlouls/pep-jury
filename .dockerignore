@@ -1,0 +1,18 @@
+# Contexte de build minimal : exclure le lourd et l'inutile (surtout cve_threat_intel 4.9G).
+.git
+.venv
+venv
+tmp
+data
+models
+cve_threat_intel
+reports
+notebooks
+docs
+**/__pycache__
+*.pyc
+*.parquet
+*.joblib
+frontend/node_modules
+frontend/dist
+.env

@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+dist/
+.env
+
+# Donnees lourdes / artefacts non versionnes (voir README)
+cve_threat_intel/
+data/
+models/
+reports/
+*.parquet
+*.joblib
+
+.DS_Store
