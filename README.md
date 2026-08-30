@@ -16,7 +16,6 @@ src/cve_exploit/              le code partage : features (JSON->tabulaire), data
 frontend/                     application React + Vite + Tailwind (jauge PEP, analyse, drift)
 Dockerfile, docker-compose.yml   deploiement : db (Postgres) + api (:8000) + front (:5173)
 docs/                         lancer.md (guide operationnel)
-CVE-2021-44228.json           un exemple de CVE (Log4Shell) pour la demo de scoring
 ```
 
 ## Prerequis
@@ -48,7 +47,8 @@ docker compose up --build     # front: http://localhost:5173  |  api: http://loc
 Scorer une CVE fournie en JSON (API) :
 
 ```bash
-curl -X POST http://127.0.0.1:8000/score -H 'Content-Type: application/json' -d @CVE-2021-44228.json
+curl -X POST http://127.0.0.1:8000/score -H 'Content-Type: application/json' -d @ma_cve.json
+# ma_cve.json = une fiche CVE au format du feed (voir features_feed.py) ou au schema NVD (features_nvd.py)
 ```
 
 ## Donnees non incluses (a fournir pour re-executer)
