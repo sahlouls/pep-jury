@@ -64,7 +64,7 @@ Pour reconstituer la chaine : placer le feed dans `cve_threat_intel/`, puis
 
 ## Verdict honnete (resume)
 
-Classification de l'**existence** d'un exploit : ROC-AUC **0,905**, PR-AUC **0,818**, Brier **0,103**
+Classification de l'**existence** d'un exploit : ROC-AUC **0,905**, PR-AUC **0,818**, Brier **0,103** (artefact *notebook* ; l'artefact *service* de `train.py`, entraîne sur un echantillon de 150 k, affiche 0,916 / 0,830 / 0,096)
 (test 2025, jamais vu). Le score est surtout **descriptif** (92 % des exploits existent deja a T0). Valeur
 reelle : trier la **zone aveugle d'EPSS** (~10 300 CVE exploitees notees < 0,01, ~x14 le hasard) +
 explicabilite + hors-ligne.

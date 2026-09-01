@@ -233,7 +233,7 @@ Le résultat : `predict_proba` renvoie un nombre qu'on peut lire comme une proba
 ### Comment on vérifie que c'est calibré : le score de Brier
 
 Le **Brier** est l'erreur quadratique moyenne entre la probabilité annoncée et la réalité (0 ou 1).
-Plus bas est meilleur. **Le nôtre vaut 0,103.**
+Plus bas est meilleur. **Le nôtre vaut 0,096** (source : `models/model_meta.json`, produit à l'entraînement).
 
 Sa force : il punit à la fois le mauvais classement **et** la mauvaise calibration. Un modèle qui
 annoncerait 0,99 partout aurait un Brier catastrophique même avec un bon classement.
@@ -266,9 +266,16 @@ Trois chiffres, trois questions différentes. Savoir laquelle répond à quoi es
 
 | Métrique | Ce qu'elle mesure | Notre score | EPSS |
 |---|---|---|---|
-| **ROC-AUC** | qualité du **classement** global | **0,917** | 0,634 |
-| **PR-AUC** | qualité du classement **sur la classe rare** | **0,837** | 0,414 |
-| **Brier** | qualité de la **calibration** | **0,103** | — |
+| **ROC-AUC** | qualité du **classement** global | **0,916** | 0,634 |
+| **PR-AUC** | qualité du classement **sur la classe rare** | **0,830** | 0,414 |
+| **Brier** | qualité de la **calibration** | **0,096** | — |
+
+> ⚠️ **Deux artefacts, deux jeux de chiffres — et il faut savoir lequel on cite.** Ceux ci-dessus sont
+> ceux de l'**artefact service** (`train.py` → `models/model.joblib`, échantillon de 150 k +
+> calibration), qui font foi dans `models/model_meta.json`. L'**artefact notebook**
+> (`notebooks/pipeline_ml.ipynb`, jeu complet) affiche ROC 0,905 / PR 0,818 / Brier 0,103. Même jeu de
+> données : l'écart vient de l'échantillonnage et de la calibration, il est petit et attendu.
+> **Si le jury interroge le notebook, citez 0,905.**
 
 ### ROC-AUC — et son piège
 
